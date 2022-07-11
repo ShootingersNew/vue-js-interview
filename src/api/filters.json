@@ -1,0 +1,34 @@
+{
+    "allFilters":{
+    "country": {
+        "name": "country",
+        "label": "Filter by country",
+        "items": [
+            {
+                "text": "Ru",
+                "value": "1"
+            },
+            {
+                "text": "Usa",
+                "value": "2"
+            }
+        ],
+        "value": ""
+    },
+    "score": {
+        "name": "score",
+        "label": "Filter by score",
+        "items": [
+            {
+                "text": "> 20",
+                "value": "1"
+            },
+            {
+                "text": "< 10",
+                "value": "2"
+            }
+        ],
+        "value": ""
+    }
+}
+}
