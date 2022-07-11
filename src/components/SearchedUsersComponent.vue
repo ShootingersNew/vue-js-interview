@@ -7,16 +7,7 @@
 
                     <v-divider v-else-if="item.divider" :key="index" :inset="item.inset"></v-divider>
 
-                    <v-list-item v-else :key="item.title">
-                        <v-list-item-avatar>
-                            <v-img :src="item.avatar"></v-img>
-                        </v-list-item-avatar>
-
-                        <v-list-item-content>
-                            <v-list-item-title v-html="item.title"></v-list-item-title>
-                            <v-list-item-subtitle v-html="item.subtitle"></v-list-item-subtitle>
-                        </v-list-item-content>
-                    </v-list-item>
+                    <user-tile-component v-else :key="index+'tile'" :item="item"></user-tile-component>
                 </template>
             </v-list>
         </v-card>
@@ -24,8 +15,12 @@
 </template>
 
 <script>
+import UserTileComponent from './UserTileComponent.vue'
 export default {
-    name:'searched-users-component',
+    name: 'searched-users-component',
+    components: {
+      UserTileComponent  
+    },
     props: {
         users: Array
     }
