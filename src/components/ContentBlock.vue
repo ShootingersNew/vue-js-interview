@@ -38,10 +38,12 @@ export default {
   },
   watch: {
     activeFilters: {
-      deep:true,
+      deep: true,
       async handler() {
-      this.users = await ApiInstance.users.getUsers(Object.entries(this.activeFilters).map(([key, { value }]) => ({ name: key, value })))
-    }  
+        const appliedFilters = Object.entries(this.activeFilters).map(([key, { value }]) => ({ name: key, value }))
+        this.users = await ApiInstance.users.getUsers(appliedFilters)
+        this.$store.commit('setActiveFilters', appliedFilters)
+      }
     },
   }
 }
