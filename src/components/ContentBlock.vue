@@ -40,7 +40,10 @@ export default {
     activeFilters: {
       deep: true,
       async handler() {
-        const appliedFilters = Object.entries(this.activeFilters).map(([key, { value }]) => ({ name: key, value }))
+        const appliedFilters = []
+        Object.entries(this.activeFilters).forEach(([key, val]) => {
+          if (val) appliedFilters.push(({ name: key, value: val.value }))
+        })
         this.users = await ApiInstance.users.getUsers(appliedFilters)
         this.$store.commit('setActiveFilters', appliedFilters)
       }
