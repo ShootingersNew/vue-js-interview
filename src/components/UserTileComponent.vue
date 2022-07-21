@@ -2,9 +2,9 @@
     <div>
         <v-list-item :key="item.title">
             <v-list-item-avatar>
-                <v-tooltip v-model="isCountryOpened" bottom>
-                <template v-slot:activator>
-                    <v-img @click="clickHandler" :src="item.avatar"></v-img>
+                <v-tooltip :open-on-hover="false" v-model="isCountryOpened" bottom>
+                <template  v-slot:activator="{ on }">
+                    <v-img v-on="on" @click="clickHandler" :src="item.avatar"></v-img>
                     </template>
                     <span>{{item.countryName}}</span>
                 </v-tooltip>

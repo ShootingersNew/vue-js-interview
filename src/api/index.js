@@ -1,19 +1,16 @@
-
-
+const filters = await import('./filters.json')
+const users = await import('./users.json')
 class Api {
-
     filters = {
         async getFilters() {
-            const filters = await import('./filters.json')
             return filters.allFilters
         },
     }
     users = {
         async getUsers(filters) {
-            const users = await import('./users.json')
             const getIsSuitable = (user) => {
                 return filters.every(({ name, value }) => {
-                    return user[name] === value
+                    return value? user[name] === value : true
                 })
             }
             return !filters ? users.allUsers : users.allUsers.filter((user) => {
